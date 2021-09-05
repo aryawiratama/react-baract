@@ -3,30 +3,40 @@ import React, { Component } from "react";
 class Counter extends React.Component {
   state = {
     count: 0,
-    tags: [],
   };
 
-  renderTags() {
-    if (this.state.tags.length === 0) return <p>There are no tags</p>;
-    return (
-      <ul>
-        {this.state.tags.map((tag) => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    );
+  constructor() {
+    super();
+    this.handleIncrement = this.handleIncrement.bind(this);
+  }
+
+  handleIncrement() {
+    console.log("increment clicked", this);
   }
 
   render() {
     return (
       <div>
-        {
-          this.state.tags.length === 0 &&
-            "Please create a new tag" /*this called truthy & falsy*/
-        }
-        {this.renderTags()}
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </div>
     );
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-2 bg-";
+    classes += this.state.count === 0 ? "primary" : "warning";
+    return classes;
+  }
+
+  formatCount() {
+    const { count } = this.state;
+    return count === 0 ? "Zero" : count;
   }
 }
 
