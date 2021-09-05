@@ -11,7 +11,7 @@ class Counter extends React.Component {
   //   }
 
   handleIncrement = () => {
-    console.log("increment clicked", this);
+    this.setState({ count: this.state.count + 1 }); // this.setState command tells react to update the view
   };
 
   render() {
