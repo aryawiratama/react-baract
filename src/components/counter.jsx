@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends React.Component {
   state = {
-    count: 0,
+    value: this.props.value,
   };
 
   //   constructor() {
@@ -11,7 +11,7 @@ class Counter extends React.Component {
   //   }
 
   handleIncrement = (increment) => {
-    this.setState({ count: this.state.count + increment }); // this.setState command tells react to update the view
+    this.setState({ value: this.state.value + increment }); // this.setState command tells react to update the view
   };
 
   render() {
@@ -30,13 +30,13 @@ class Counter extends React.Component {
 
   getBadgeClasses() {
     let classes = "badge m-2 bg-";
-    classes += this.state.count === 0 ? "primary" : "warning";
+    classes += this.state.value === 0 ? "primary" : "warning";
     return classes;
   }
 
   formatCount() {
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
+    const { value } = this.state;
+    return value === 0 ? "Zero" : value;
   }
 }
 
