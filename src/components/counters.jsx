@@ -10,10 +10,14 @@ class Counters extends React.Component {
             {id: 4, value: 0}
         ]
     }
+    deleteComponent = counterId =>{
+        const counters = this.state.counters.filter(counter => counter.id != counterId);
+        this.setState({counters: counters});
+    }
     render() { 
         return (<div>
             {this.state.counters.map(counter => 
-            <Counter key={counter.id} value={counter.value} >
+            <Counter key={counter.id} value={counter.value} onDelete={this.deleteComponent} id={counter.id}>
                 <h5>Counter #{counter.id}</h5>
             </Counter>)}
         </div>);
