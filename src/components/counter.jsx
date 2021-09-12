@@ -10,8 +10,8 @@ class Counter extends React.Component {
   //     this.handleIncrement = this.handleIncrement.bind(this);
   //   }
 
-  handleIncrement = () => {
-    this.setState({ count: this.state.count + 1 }); // this.setState command tells react to update the view
+  handleIncrement = (increment) => {
+    this.setState({ count: this.state.count + increment }); // this.setState command tells react to update the view
   };
 
   render() {
@@ -19,7 +19,7 @@ class Counter extends React.Component {
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={this.handleIncrement}
+          onClick={() => this.handleIncrement(1)}
           className="btn btn-secondary btn-sm"
         >
           Increment
