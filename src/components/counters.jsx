@@ -12,7 +12,10 @@ class Counters extends React.Component {
     }
     render() { 
         return (<div>
-            {this.state.counters.map(counter => <Counter key={counter.id} value={counter.value} />)}
+            {this.state.counters.map(counter => 
+            <Counter key={counter.id} value={counter.value} >
+                <h5>Counter #{counter.id}</h5>
+            </Counter>)}
         </div>);
     }
 }
